@@ -11,7 +11,7 @@ class InitiationQt : public QMainWindow
 
 public:
 	InitiationQt(QWidget *parent = Q_NULLPTR);
-	
+	//~InitiationQt();
 
 private:
 	Ui::InitiationQtClass ui;
@@ -27,6 +27,8 @@ public slots:
 	void onServerNewConnection();
 	void onClientDisconnected();
 	void onClientReadyRead();
+	void EnvoiCel();
+	void EnvoiFar();
+	void EnvoiHyg();
 	
-
 };
