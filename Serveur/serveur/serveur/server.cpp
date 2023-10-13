@@ -16,7 +16,7 @@ void Server::incomingConnection(qintptr socketDescriptor) {
 	// Mettre à jour l'état de connexion
 	qDebug() << "Nouvelle connexion entrante.";
 	clientConnected = true;
-	qDebug() << "Etat de connexion mis a jour : le client est connecte ";
+	qDebug() << "Etat de connexion mis a jour : le client est connecte.";
 
 
 	connect(clientSocket, &QTcpSocket::readyRead, this, [clientSocket, this]() {
@@ -43,7 +43,7 @@ void Server::processRequest(const QByteArray &request, QTcpSocket *clientSocket)
 		float value = QRandomGenerator::global()->generateDouble() * 55.0 - 20.0;
 
 		// Formater la réponse pour "Td"
-		response = QString("%1%2/TYPE/DEG/VALUE/%3").arg(sensorType).arg(sensorID).arg(value, 0, 'f', 2);
+		response = QString("%1%2,%3").arg(sensorType).arg(sensorID).arg(value, 0, 'f', 2);
 	}
 	else if (request.startsWith("Tf")) {
 		QString sensorType = request.mid(0, 2);
@@ -53,7 +53,7 @@ void Server::processRequest(const QByteArray &request, QTcpSocket *clientSocket)
 		float value = (QRandomGenerator::global()->generateDouble() * 55.0 - 20.0) * 9.0 / 5.0 + 32.0;
 
 		// Formater la réponse pour "Tf"
-		response = QString("%1%2/TYPE/FAR/VALUE/%3").arg(sensorType).arg(sensorID).arg(value, 0, 'f', 2);
+		response = QString("%1%2,%3").arg(sensorType).arg(sensorID).arg(value, 0, 'f', 2);
 	}
 	else if (request.startsWith("Hr")) {
 		QString sensorType = request.mid(0, 2);
@@ -63,7 +63,7 @@ void Server::processRequest(const QByteArray &request, QTcpSocket *clientSocket)
 		float value = QRandomGenerator::global()->generateDouble() * 100.0;
 
 		// Formater la réponse pour "Hr"
-		response = QString("%1%2/TYPE/HYD/VALUE/%3").arg(sensorType).arg(sensorID).arg(value, 0, 'f', 2);
+		response = QString("%1%2,%3").arg(sensorType).arg(sensorID).arg(value, 0, 'f', 2);
 	}
 	else {
 		response = "Requete non valide.";
