@@ -1,5 +1,5 @@
 #include "InitiationQt.h"
-InitiationQt::InitiationQt(QWidget *parent)
+InitiationQt::InitiationQt(QWidget* parent)
 	: QMainWindow(parent)
 {
 	ui.setupUi(this);
@@ -7,11 +7,14 @@ InitiationQt::InitiationQt(QWidget *parent)
 	QObject::connect(socket, SIGNAL(connected()), this, SLOT(onSocketConnected()));
 	QObject::connect(socket, SIGNAL(disconnected()), this, SLOT(onSocketDisconnected()));
 	QObject::connect(socket, SIGNAL(readyRead()), this, SLOT(onSocketReadyRead()));
-	
+
 	server = new QTcpServer(this);
 	QObject::connect(server, SIGNAL(newConnection()), this, SLOT(onServerNewConnection()));
 	server->listen(QHostAddress::AnyIPv4, 4321);
 
+	
+	ui.IPLineEdit->setText("192.168.64.129"); 
+	ui.portLineEdit->setText("12345");    
 }
 void InitiationQt::onDisplayMessageButtonClicked(){
 	ui.label->setText("Hello word !");
@@ -19,6 +22,7 @@ void InitiationQt::onDisplayMessageButtonClicked(){
 void InitiationQt::onConnectButtonClicked(){
 	QString ip = ui.IPLineEdit->text();
 	QString port = ui.portLineEdit->text();
+
 
 
 	bool ok;
