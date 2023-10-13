@@ -12,11 +12,6 @@ InitiationQt::InitiationQt(QWidget *parent)
 	QObject::connect(server, SIGNAL(newConnection()), this, SLOT(onServerNewConnection()));
 	server->listen(QHostAddress::AnyIPv4, 4321);
 
-	//bdd = QSqlDatabase::addDatabase("QMYSQL");
-	//bdd.setHostName("192.168.65.184");
-	//bdd.setUserName("root");
-	//bdd.setPassword("root");
-	//bdd.setDatabaseName("basetest");
 }
 void InitiationQt::onDisplayMessageButtonClicked(){
 	ui.label->setText("Hello word !");
@@ -39,10 +34,18 @@ void InitiationQt::onSocketConnected(){
 void InitiationQt::onSocketDisconnected(){
 	ui.connectionStatusLabel->setText("Status connexion : Déconnecté !");
 }
-void InitiationQt::onSendMessageButtonClicked(){
-	if (socket->state() == QTcpSocket::ConnectedState)
-	{
-		socket->write("Hello server !\n");
+
+
+
+// Envoi du mess 
+void InitiationQt::onSendMessageButtonClicked() {
+	if (socket->state() == QTcpSocket::ConnectedState) {
+		QString message = ui.plainTextEdit->toPlainText(); // Récupère le texte du QTextEdit
+
+		if (!message.isEmpty()) {
+			QByteArray data = message.toUtf8();
+			socket->write(data);
+		}
 	}
 }
 void InitiationQt::onSocketReadyRead(){
