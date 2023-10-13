@@ -17,7 +17,7 @@ InitiationQt::InitiationQt(QWidget* parent)
 	ui.portLineEdit->setText("12345");    
 }
 void InitiationQt::onDisplayMessageButtonClicked(){
-	ui.label->setText("Hello word !");
+	
 }
 void InitiationQt::onConnectButtonClicked(){
 	QString ip = ui.IPLineEdit->text();
@@ -56,7 +56,7 @@ void InitiationQt::onSocketReadyRead(){
 
 	QByteArray data = socket->read(socket->bytesAvailable());
 	QString str(data);
-	ui.connectionStatusLabel->setText("Status connexion : Message recu = " + str);
+	ui.connectionStatusLabel1->setText("Messagess recu = " + str);
 }
 void InitiationQt::onServerNewConnection(){
 	ui.connectionStatusLabel->setText("Un client s'est connecte");
@@ -74,7 +74,42 @@ void InitiationQt::onClientReadyRead(){
 	QTcpSocket *obj = qobject_cast<QTcpSocket*>(sender());
 	QByteArray coucou = obj->read(obj->bytesAvailable());
 	QString str(coucou);
-	ui.connectionStatusLabel->setText("Status connexion : Message recu = " + str);
+	ui.connectionStatusLabel1->setText("Message recu = " + str);
 	obj->write(coucou);
 }
+
+
+void InitiationQt::EnvoiCel() {
+	QString cel = "Td";
+	QString num = ui.plainTextEdit->toPlainText();
+	QByteArray data = cel.toUtf8();
+	QByteArray data2 = num.toUtf8();
+	socket->write(data + data2);
+
+}
+
+void InitiationQt::EnvoiFar() {
+	
+	QString far = "Tf";
+	QString num = ui.plainTextEdit->toPlainText();
+	QByteArray data = far.toUtf8();
+	QByteArray data2 = num.toUtf8();
+	socket->write(data + data2);
+	
+
+
+}
+
+void InitiationQt::EnvoiHyg() {
+
+	QString hyg = "Hr";
+	QString num = ui.plainTextEdit->toPlainText();
+	QByteArray data = hyg.toUtf8();
+	QByteArray data2 = num.toUtf8();
+	socket->write(data + data2);
+
+
+	
+}
+
 
