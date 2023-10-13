@@ -1,11 +1,10 @@
-// server.cpp
 #include "server.h"
 #include <QTcpSocket>
 #include <QRandomGenerator>
 #include <QDebug>
 
 Server::Server(QObject *parent) : QTcpServer(parent) {
-	// Initialisation de votre serveur
+	// Initialisation du serveur
 }
 
 void Server::incomingConnection(qintptr socketDescriptor) {
@@ -13,10 +12,20 @@ void Server::incomingConnection(qintptr socketDescriptor) {
 	QTcpSocket *clientSocket = new QTcpSocket(this);
 	clientSocket->setSocketDescriptor(socketDescriptor);
 
-	// Mettre à jour l'état de connexion
-	qDebug() << "Nouvelle connexion entrante.";
+	// Récupérer l'adresse IP du client
+	QHostAddress clientAddress = clientSocket->peerAddress();
+	QString clientIPv4 = clientAddress.toString();
+
+	// Supprimer "::ffff:" si présent
+	if (clientIPv4.startsWith("::ffff:")) {
+		clientIPv4 = clientIPv4.mid(7); // Pour supprimer les 7 premiers caractères "::ffff:"
+	}
+
+
+	// On met à jour l'état de connexion
+	qDebug() << "Nouvelle connexion entrante depuis : " << clientIPv4;
 	clientConnected = true;
-	qDebug() << "Etat de connexion mis a jour : le client est connecte.";
+	qDebug() << "Etat de connexion mis a jour : le client est connecte au serveur.";
 
 
 	connect(clientSocket, &QTcpSocket::readyRead, this, [clientSocket, this]() {
@@ -26,7 +35,7 @@ void Server::incomingConnection(qintptr socketDescriptor) {
 		});
 }
 bool Server::isClientConnected() const {
-	return clientConnected;
+	return clientConnected; // Une personne est connectée
 }
 
 
@@ -34,7 +43,7 @@ bool Server::isClientConnected() const {
 void Server::processRequest(const QByteArray &request, QTcpSocket *clientSocket) {
 	QString response;
 
-	// Analyser la demande
+	// Analyse de la demande
 	if (request.startsWith("Td")) {
 		QString sensorType = request.mid(0, 2);
 		QString sensorID = request.mid(2, 2);
