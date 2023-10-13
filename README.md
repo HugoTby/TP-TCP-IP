@@ -1,4 +1,4 @@
-# Compte Rendu - TP Client/Serveur TCP/IP avec Qt
+# TP Client/Serveur TCP/IP avec Qt
 
 ## Sommaire
 1. Introduction
