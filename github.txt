@@ -1,0 +1,95 @@
+    Delete Client/InitiationQt/InitiationQt/x64 directory
+    Auteur : @HugoTby
+    Date : Oct 13, 2023
+
+    Delete Client/InitiationQt/x64 directory
+    Auteur : @HugoTby
+    Date : Oct 13, 2023
+
+    Delete Serveur/serveur/serveur/x64 directory
+    Auteur : @HugoTby
+    Date : Oct 13, 2023
+
+    Delete Serveur/serveur/x64 directory
+    Auteur : @HugoTby
+    Date : Oct 13, 2023
+
+    finish
+    Auteur : @LopesDamien
+    Date : Oct 13, 2023
+
+    Delete InitiationQt.qrc
+    Auteur : @LopesDamien
+    Date : Oct 13, 2023
+
+    Delete InitiationQt.ui
+    Auteur : @LopesDamien
+    Date : Oct 13, 2023
+
+    bientot fini
+    Auteur : @LopesDamien
+    Date : Oct 13, 2023
+
+    finish
+    Auteur : @LopesDamien
+    Date : Oct 13, 2023
+
+    finish
+    Auteur : @LopesDamien
+    Date : Oct 13, 2023
+
+    Add files via upload
+    Auteur : @HugoTby
+    Date : Oct 13, 2023
+
+    Update README.md
+    Auteur : @HugoTby
+    Date : Oct 13, 2023
+
+    Create README.md
+    Auteur : @HugoTby
+    Date : Oct 13, 2023
+
+    Add files via upload
+    Auteur : @HugoTby
+    Date : Oct 13, 2023
+
+    pre remplissage ip et port
+    Auteur : @LopesDamien
+    Date : Oct 13, 2023
+
+    Add files via upload
+    Auteur : @LopesDamien
+    Date : Oct 13, 2023
+
+    Add files via upload
+    Auteur : @LopesDamien
+    Date : Oct 13, 2023
+
+    ajout d'envoi message
+    Auteur : @LopesDamien
+    Date : Oct 13, 2023
+
+    Add files via upload
+    Auteur : @HugoTby
+    Date : Oct 13, 2023
+
+    Add files via upload
+    Auteur : @LopesDamien
+    Date : Oct 13, 2023
+
+    Fonction connection, message recu, statuconnecté
+    Auteur : @LopesDamien
+    Date : Oct 13, 2023
+
+    Add files via upload
+    Auteur : @HugoTby
+    Date : Oct 13, 2023
+
+    Add files via upload
+    Auteur : @HugoTby
+    Date : Oct 13, 2023
+
+    Create github.txt
+    Auteur : @HugoTby
+    Date : Oct 13, 2023
